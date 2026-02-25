@@ -1,4 +1,5 @@
 # machadosirrigation.github.io
+[index.html](https://github.com/user-attachments/files/25551105/index.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,13 +156,8 @@ footer {
 </div>
 
 <footer>
-  
   <p>© 2026 Machados Irrigation & Landscape | Licensed & Insured</p>
 </footer>
 
 </body>
-</html><img width="1024" height="1024" alt="logo" src="https://github.com/user-attachments/assets/1b2b633a-e075-4958-8a7b-18d2ec5b6539" />
-![photo1](https://github.com/user-attachments/assets/d91a8e74-d408-43dd-b276-41d5d0a471b9)
-![photo2](https://github.com/user-attachments/assets/bd0351b1-4f40-4cd8-b3f9-7bea2112d105)
-![photo3](https://github.com/user-attachments/assets/fb932da5-d3ff-44d4-bdc5-1c17d9c32c5c)
-![yard](https://github.com/user-attachments/assets/8b5d4588-bfba-4480-9bea-0778f3b70823)
+</html>

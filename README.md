@@ -38,7 +38,8 @@ body {
 }
 .hero img {
   width: 130px;
-  border-radius: 50%;
+  border-r![yard](https://github.com/user-attachments/assets/c700d8da-2523-4121-b705-233ccccff4d1)
+adius: 50%;
   background: white;
   padding: 5px;
 }

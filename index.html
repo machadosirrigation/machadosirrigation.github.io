@@ -1,47 +1,212 @@
-<script>
-document.getElementById("estimateForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Machados Irrigation & Landscape</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  const form = e.target;
-
-  const payload = {
-    name: form.name.value,
-    phone: form.phone.value,
-    email: form.email.value,
-    address: form.address.value,
-    serviceType: form.serviceType.value,
-    message: form.message.value,
-    preferredDate: form.preferredDate.value
-  };
-
-  try {
-    const res = await fetch("https://machados-serviceops.vercel.app/api/website-request", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const text = await res.text();
-    console.log("API status:", res.status);
-    console.log("API response:", text);
-
-    let data = {};
-    try {
-      data = JSON.parse(text);
-    } catch {}
-
-    if (!res.ok) {
-      alert((data && data.error) || text || "Something went wrong.");
-      return;
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
     }
 
-    alert("Request sent! We will contact you soon.");
-    form.reset();
-  } catch (err) {
-    console.error(err);
-    alert("Could not reach the CRM server.");
-  }
-});
-</script>
+    .navbar {
+      background: #1e73be;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+    }
+
+    .navbar a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url("yard.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero img {
+      width: 130px;
+      border-radius: 50%;
+      background: white;
+      padding: 5px;
+    }
+
+    .hero h1 {
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+    }
+
+    button {
+      background: #1e73be;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#photos">Photos</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div id="home" class="hero">
+    <img src="logo.png" alt="Machados Logo" />
+    <h1>Machados Irrigation & Landscape</h1>
+    <p>Professional Sprinkler & Landscaping Services</p>
+    <h2>📞 719-287-0176</h2>
+  </div>
+
+  <div id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="card">✔ Sprinkler Installation & Repair</div>
+    <div class="card">✔ Landscape Design & Planting</div>
+    <div class="card">✔ Lawn Maintenance</div>
+    <div class="card">✔ Spring & Fall Cleanup</div>
+  </div>
+
+  <div id="photos" class="section">
+    <h2>Our Work</h2>
+    <div class="gallery">
+      <img src="photo1.jpg" alt="Work photo 1" />
+      <img src="photo2.jpg" alt="Work photo 2" />
+      <img src="photo3.jpg" alt="Work photo 3" />
+    </div>
+  </div>
+
+  <div id="contact" class="section">
+    <h2>Get a Free Estimate</h2>
+
+    <form id="estimateForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="text" name="phone" placeholder="Phone Number" required />
+      <input type="email" name="email" placeholder="Email" />
+      <input type="text" name="address" placeholder="Service Address" />
+      <input type="text" name="serviceType" placeholder="Service Needed" required />
+      <input type="date" name="preferredDate" />
+      <textarea name="message" placeholder="Tell us about the job"></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+
+    <p>Or call/text: <b>719-287-0176</b></p>
+  </div>
+
+  <footer>
+    <p>© 2026 Machados Irrigation & Landscape | Licensed & Insured</p>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("estimateForm");
+
+      if (!form) {
+        console.error("estimateForm not found");
+        return;
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const payload = {
+          name: form.name.value,
+          phone: form.phone.value,
+          email: form.email.value,
+          address: form.address.value,
+          serviceType: form.serviceType.value,
+          message: form.message.value,
+          preferredDate: form.preferredDate.value
+        };
+
+        try {
+          const res = await fetch("https://machados-serviceops.vercel.app/api/website-request", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const text = await res.text();
+          console.log("API status:", res.status);
+          console.log("API response:", text);
+
+          let data = {};
+          try {
+            data = JSON.parse(text);
+          } catch {}
+
+          if (!res.ok) {
+            alert((data && data.error) || text || "Something went wrong.");
+            return;
+          }
+
+          alert("Request sent! We will contact you soon.");
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          alert("Could not reach the CRM server.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

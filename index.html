@@ -177,7 +177,7 @@ document.getElementById("estimateForm").addEventListener("submit", async functio
     preferredDate: form.preferredDate.value
   };
 
-  const res = await fetch("https://YOUR-CRM-DOMAIN.com/api/website-request", {
+  const res = await fetch("https://machados-serviceops.vercel.app/api/website-request", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -200,5 +200,6 @@ document.getElementById("estimateForm").addEventListener("submit", async functio
 </body>
 
 </html>
+
 
 

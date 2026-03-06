@@ -187,19 +187,20 @@ document.getElementById("estimateForm").addEventListener("submit", async functio
 
   const data = await res.json();
 
-  if (!res.ok) {
-    alert(data.error || "Something went wrong.");
-    return;
-  }
+if (!res.ok) {
+  alert(data.error || "Something went wrong.");
+  return;
+}
 
-  alert("Request sent! We will contact you soon.");
-  form.reset();
+alert("Request sent! We will contact you soon.");
+form.reset();
 });
 </script>
   
 </body>
 
 </html>
+
 
 
 
